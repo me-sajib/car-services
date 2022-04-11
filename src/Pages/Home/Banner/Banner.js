@@ -1,4 +1,7 @@
 import React from "react";
+import slider1 from "../../../banner/banner1.jpg";
+import slider2 from "../../../banner/banner2.jpg";
+import slider3 from "../../../banner/banner3.jpg";
 
 const Banner = () => {
   return (
@@ -31,21 +34,21 @@ const Banner = () => {
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img src="..." className="d-block w-100" alt="..." />
+          <img src={slider1} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div className="carousel-item">
-          <img src="..." className="d-block w-100" alt="..." />
+          <img src={slider2} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <h5>Second slide label</h5>
             <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
         <div className="carousel-item">
-          <img src="..." className="d-block w-100" alt="..." />
+          <img src={slider3} className="d-block w-100" alt="..." />
           <div className="carousel-caption d-none d-md-block">
             <h5>Third slide label</h5>
             <p>Some representative placeholder content for the third slide.</p>
