@@ -7,13 +7,12 @@ const CustomLink = ({children, to, ...props}) => {
     return (
         <div>
              <Link className="nav-link"
-        style={{ textDecoration: match ? "underline" : "none" }}
+        style={{ color: match ? "black" : "gray" }}
         to={to}
         {...props}
       >
         {children}
       </Link>
-      {match && " (active)"}
         </div>
     );
 };
