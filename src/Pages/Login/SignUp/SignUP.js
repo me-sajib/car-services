@@ -22,7 +22,7 @@ const SignUP = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         
-        await createUserWithEmailAndPassword(email, password,{sendEmailVerification: true})
+        await createUserWithEmailAndPassword(email, password)
         await sendEmailVerification();
     }
     // navigate url
@@ -32,20 +32,17 @@ const SignUP = () => {
    }
 //    error check
 let err;
-    if(error){
-      err = error;  
-    }
+   if(error){
+       err= <p>Error{error.message}</p>
+   }
 
-    // email verification send
-    if(sending){
-        <p>Email verification send</p>
-    }
+   
     
     return (
         <div className='bg-light py-5'>
             <div className="container">
                 <div className="w-50 mx-auto">
-                    {err && <p>{err}</p>}
+                    
                      <h1>Hi, <span className='text-primary'> Create your account    </span></h1>
                     <form onSubmit={createAccount}>
                 <div className="mb-3">
@@ -63,6 +60,10 @@ let err;
                     <input type="password" name='password' className="form-control" id="exampleInputPassword1"/>
                 </div>
                 
+                {
+                /* error check */
+               err
+                }
                 <button type="submit" className="btn btn-primary d-block w-100">Submit</button>
                 {
                 /* loading after signUP */

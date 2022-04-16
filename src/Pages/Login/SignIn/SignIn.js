@@ -27,7 +27,10 @@ const SignIn = () => {
        navigate(from, {replace:true})
    }
 
-   
+   let err;
+   if(error){
+       err = <p>Error: {error.message}</p>
+   }
     return (
         <div className='bg-light py-5'>
             <div className="container">
@@ -51,6 +54,9 @@ const SignIn = () => {
   </div>
 </div>
                 }
+                {
+                /* {error check */
+                err}
                 <button type="submit" className="btn btn-primary d-block w-100">Login</button>
                 <p className='pt-4'>If your no account? <Link to="/register" className="text-primary">Create account now</Link></p>
                 </form>
