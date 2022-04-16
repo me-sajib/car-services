@@ -6,7 +6,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const SignIn = () => {
     const location = useLocation();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
   const [
   signInWithEmailAndPassword,
   user,
@@ -42,6 +42,14 @@ const SignIn = () => {
                     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                     <input type="password" name='password' className="form-control" id="exampleInputPassword1"/>
                 </div>
+                {
+                    // spinner
+                    loading && <div className="text-center">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>
+                }
                 <button type="submit" className="btn btn-primary d-block w-100">Login</button>
                 <p className='pt-4'>If your no account? <Link to="/register" className="text-primary">Create account now</Link></p>
                 </form>

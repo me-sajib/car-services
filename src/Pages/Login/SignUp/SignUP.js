@@ -1,35 +1,51 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import auth from '../../../firebase.init';
 
 const SignUP = () => {
+    const location = useLocation();
+    const navigate = useNavigate()
       const [
   createUserWithEmailAndPassword,
   user,
   loading,
   error,
 ] = useCreateUserWithEmailAndPassword(auth);
-    const createAccount = (e)=>{
+  const [sendEmailVerification, sending] = useSendEmailVerification(
+    auth
+  );
+    const createAccount =async (e)=>{
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         
-        createUserWithEmailAndPassword(email, password,{sendEmailVerification: true})
+        await createUserWithEmailAndPassword(email, password,{sendEmailVerification: true})
+        await sendEmailVerification();
     }
-     if(user){
-        console.log(user)
-    }
+    // navigate url
+    let from = location.state?.from?.pathname || "/";
+   if(user){
+       navigate(from, {replace:true})
+   }
+//    error check
+let err;
     if(error){
-        console.log(error)
+      err = error;  
+    }
+
+    // email verification send
+    if(sending){
+        <p>Email verification send</p>
     }
     
     return (
         <div className='bg-light py-5'>
             <div className="container">
                 <div className="w-50 mx-auto">
+                    {err && <p>{err}</p>}
                      <h1>Hi, <span className='text-primary'> Create your account    </span></h1>
                     <form onSubmit={createAccount}>
                 <div className="mb-3">
@@ -48,6 +64,15 @@ const SignUP = () => {
                 </div>
                 
                 <button type="submit" className="btn btn-primary d-block w-100">Submit</button>
+                {
+                /* loading after signUP */
+                loading && <div className="text-center">
+  <div className="spinner-border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+</div>
+                }
+                
                 </form>
                 <p className='pt-4'>Already an account? <Link to="/login" className="text-primary">login now</Link></p>
                 <SocialLogin/>
