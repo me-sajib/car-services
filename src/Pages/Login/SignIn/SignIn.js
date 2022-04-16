@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import auth from '../../../firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const SignIn = () => {
+    const location = useLocation();
+    const navigate = useNavigate()
   const [
   signInWithEmailAndPassword,
   user,
@@ -21,7 +23,10 @@ const SignIn = () => {
     if(user){
         console.log(user, error)
     }
-   
+   let from = location.state?.from?.pathname || "/";
+   if(user){
+       navigate(from, {replace:true})
+   }
     return (
         <div className='bg-light py-5'>
             <div className="container">
