@@ -7,6 +7,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const SignIn = () => {
     const location = useLocation();
     const navigate = useNavigate();
+   let from = location.state?.from?.pathname || "/";
   const [
   signInWithEmailAndPassword,
   user,
@@ -20,13 +21,13 @@ const SignIn = () => {
 
         signInWithEmailAndPassword(email, password)
     }
-    if(user){
-        console.log(user, error)
-    }
-   let from = location.state?.from?.pathname || "/";
+
+
    if(user){
        navigate(from, {replace:true})
    }
+
+   
     return (
         <div className='bg-light py-5'>
             <div className="container">
