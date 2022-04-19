@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import auth from "../../../firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 
 const SignIn = () => {
   const location = useLocation();
@@ -30,6 +31,8 @@ const SignIn = () => {
 
   return (
     <div className="bg-light py-5">
+      {/* page title */}
+      <PageTitle title="login -car service" />
       <div className="container">
         <div className="w-50 mx-auto">
           <h1>

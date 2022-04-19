@@ -6,6 +6,7 @@ import {
 } from "react-firebase-hooks/auth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import auth from "../../../firebase.init";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 
 const SignUP = () => {
   const location = useLocation();
@@ -35,6 +36,8 @@ const SignUP = () => {
 
   return (
     <div className="bg-light py-5">
+      {/* page title */}
+      <PageTitle title="Create Account -car service" />
       <div className="container">
         <div className="w-50 mx-auto">
           <h1>
