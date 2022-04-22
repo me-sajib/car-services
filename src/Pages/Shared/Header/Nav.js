@@ -33,9 +33,14 @@ const Nav = () => {
               <CustomLink to="/">Home</CustomLink>
             </li>
             {user && (
-              <li className="nav-item">
-                <CustomLink to="/addProduct">Add Product</CustomLink>
-              </li>
+              <>
+                <li className="nav-item">
+                  <CustomLink to="/addProduct">Add Product</CustomLink>
+                </li>
+                <li className="nav-item">
+                  <CustomLink to="/manage">Manage Product</CustomLink>
+                </li>
+              </>
             )}
 
             {user ? (
