@@ -6,6 +6,7 @@ import SignUP from "./Pages/Login/SignUp/SignUP";
 import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import Checkout from "./Pages/Home/Checkout/Checkout";
 import AddProduct from "./Pages/Home/AddProduct/AddProduct";
+import ManageProduct from "./Pages/Home/ManageProduct/ManageProduct";
 
 function App() {
   return (
@@ -28,6 +29,14 @@ function App() {
           element={
             <RequireAuth>
               <AddProduct />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/manage"
+          element={
+            <RequireAuth>
+              <ManageProduct />
             </RequireAuth>
           }
         />
