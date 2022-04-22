@@ -32,12 +32,26 @@ const Nav = () => {
             <li className="nav-item">
               <CustomLink to="/">Home</CustomLink>
             </li>
-            
-            {user ? <li className="nav-item">
-              <button onClick={()=>signOut(auth)} className="btn btn-link text-decoration-none">Logout</button>
-            </li> :<li className="nav-item">
-              <CustomLink to="/login">Login</CustomLink>
-            </li> }
+            {user && (
+              <li className="nav-item">
+                <CustomLink to="/addProduct">Add Product</CustomLink>
+              </li>
+            )}
+
+            {user ? (
+              <li className="nav-item">
+                <button
+                  onClick={() => signOut(auth)}
+                  className="btn btn-link text-decoration-none"
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <CustomLink to="/login">Login</CustomLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>
