@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import useServices from "../../../Hooks/UseServices";
 import Service from "../Service/Service";
 
@@ -12,7 +11,7 @@ const Services = () => {
 
       <div className="row row-cols-1 row-cols-md-2 g-4">
         {service.map((item) => (
-          <Service key={item.id} items={item} />
+          <Service key={item._id} items={item} />
         ))}
       </div>
     </div>
