@@ -6,8 +6,17 @@ const AddProduct = () => {
     const name = e.target.name.value;
     const description = e.target.description.value;
     const price = e.target.price.value;
-    const image = e.target.img.value;
-    console.log(name, description, price, image);
+    const img = e.target.img.value;
+    // insert to database
+    fetch("http://localhost:5000/service", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ name, description, price, img }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log("data inserted successfully", result);
+      });
   };
   return (
     <div className="container">
