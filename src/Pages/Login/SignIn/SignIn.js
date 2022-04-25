@@ -4,6 +4,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import auth from "../../../firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
+import axios from "axios";
 
 const SignIn = () => {
   const location = useLocation();
@@ -12,16 +13,19 @@ const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const userLogin = (e) => {
+  const userLogin = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(email, password);
+    const { data } = await axios.post("http://localhost:5000/login", { email });
+    localStorage.setItem("token", data.token);
+    navigate(from, { replace: true });
   };
 
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
   let err;
