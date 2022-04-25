@@ -40,6 +40,9 @@ const Nav = () => {
                 <li className="nav-item">
                   <CustomLink to="/manage">Manage Product</CustomLink>
                 </li>
+                <li className="nav-item">
+                  <CustomLink to="/order">order</CustomLink>
+                </li>
               </>
             )}
 
