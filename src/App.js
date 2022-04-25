@@ -7,6 +7,7 @@ import RequireAuth from "./Pages/Login/RequireAuth/RequireAuth";
 import Checkout from "./Pages/Home/Checkout/Checkout";
 import AddProduct from "./Pages/Home/AddProduct/AddProduct";
 import ManageProduct from "./Pages/Home/ManageProduct/ManageProduct";
+import Order from "./Pages/Order/Order";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
           element={
             <RequireAuth>
               <ManageProduct />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/order"
+          element={
+            <RequireAuth>
+              <Order />
             </RequireAuth>
           }
         />
